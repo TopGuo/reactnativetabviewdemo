@@ -1,11 +1,18 @@
 /* @flow */
 
 import * as React from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import {
+  StyleSheet,
+  Dimensions,
+  View,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import {
   TabViewAnimated,
   TabBar,
   TabViewPagerExperimental,
+
 } from '../tab/src';
 import SimplePage from './SimplePage';
 
@@ -16,7 +23,7 @@ type State = NavigationState<
     key: string,
     title: string,
   }>
->;
+  >;
 
 const initialLayout = {
   height: 0,
@@ -24,14 +31,14 @@ const initialLayout = {
 };
 
 export default class NativeDriverExample extends React.Component<*, State> {
-  
+
   static title = 'With native animations';
   static appbarElevation = 0;
 
   state = {
     index: 1,
     routes: [
-      { key: '1', title: '对我感兴趣'},
+      { key: '1', title: '对我感兴趣' },
       { key: '2', title: '看过我' },
       { key: '3', title: '新职位' },
     ],
@@ -42,15 +49,38 @@ export default class NativeDriverExample extends React.Component<*, State> {
     this.setState({
       index,
     });
-
+  //渲染头部
   _renderHeader = props => (
-    <TabBar
-      {...props}
-      indicatorStyle={styles.indicator}
-      style={styles.tabbar}
-      labelStyle={styles.label}
-    />
+    <View>
+      <View style={{ backgroundColor: '#66cdaa', height: 50, alignItems: 'center', justifyContent: 'center', }}>
+        <View style={{ borderWidth: 2, borderColor: '#fff', borderRadius: 8, height: 30, width: 130,  flexDirection: 'row' }}>
+          <TouchableOpacity
+            style={{ alignItems: 'center',flex:1,backgroundColor: '#fff',justifyContent:'center' }}
+          >
+            <Text style={{ color: '#66cdaa' }}>
+              聊天
+            </Text>
+          </TouchableOpacity>
+          <View style={{ borderWidth: 1, borderColor: '#fff', height: 30, width: 1 }}></View>
+          <TouchableOpacity
+            style={{ alignItems: 'center', flex:1,justifyContent: 'center', backgroundColor: '#66cdaa' }}
+          >
+            <Text style={{ color: '#fff' }}>
+              互动
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <TabBar
+        {...props}
+        indicatorStyle={styles.indicator}
+        style={styles.tabbar}
+        labelStyle={styles.label}
+      />
+    </View>
   );
+
+
 
   _renderScene = ({ route }) => {
     switch (route.key) {
@@ -93,6 +123,7 @@ export default class NativeDriverExample extends React.Component<*, State> {
         onIndexChange={this._handleIndexChange}
         initialLayout={initialLayout}
         useNativeDriver
+
       />
     );
   }
@@ -107,7 +138,7 @@ const styles = StyleSheet.create({
   },
   indicator: {
     backgroundColor: '#66cdaa',
-    height:3,//下划线宽度
+    height: 3,//下划线宽度
   },
   label: {
     color: '#939393',

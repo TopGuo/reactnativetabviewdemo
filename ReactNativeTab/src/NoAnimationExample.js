@@ -92,6 +92,13 @@ export default class TopBarIconExample extends React.Component<*, State> {
       </View>
     );
   };
+  //渲染头部
+  _renderHeader = props => (
+    <View style={{backgroundColor:'#66cdaa',height:50}}>
+
+
+    </View>
+  );
 
   _renderFooter = props => (
     <View style={styles.tabbar}>
@@ -137,9 +144,7 @@ export default class TopBarIconExample extends React.Component<*, State> {
           <BasicListView
             style={[styles.page, { backgroundColor: '#EDD8B5' }]}
           />
-          // <View>
-          //   <Text>我的</Text>
-          // </View>
+
         );
 
       default:
@@ -149,19 +154,16 @@ export default class TopBarIconExample extends React.Component<*, State> {
 
   render() {
     return (
-      <View>
+      <TabViewAnimated
+        style={[styles.container, this.props.style]}
+        navigationState={this.state}
+        renderScene={this._renderScene}
+        renderFooter={this._renderFooter}
+        onIndexChange={this._handleIndexChange}
+        animationEnabled={false}
+        swipeEnabled={false}
         
-        <TabViewAnimated
-          style={[styles.container, this.props.style]}
-          navigationState={this.state}
-          renderScene={this._renderScene}
-          renderFooter={this._renderFooter}
-          onIndexChange={this._handleIndexChange}
-          animationEnabled={false}
-          swipeEnabled={false}
-        />
-      </View>
-
+      />
     );
   }
 }
