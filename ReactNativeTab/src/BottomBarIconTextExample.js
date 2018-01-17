@@ -1,7 +1,13 @@
 /* @flow */
 
 import * as React from 'react';
-import { Animated, View, Text, StyleSheet } from 'react-native';
+import {
+  Animated,
+  View,
+  Text,
+  StyleSheet,
+  StatusBar,
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { TabViewAnimated, TabBar } from '../tab/src';
 import SimplePage from './SimplePage';
@@ -15,14 +21,14 @@ type State = NavigationState<
     icon: string,
     color: string,
   }>
->;
+  >;
 
 export default class BottomBarIconExample extends React.Component<*, State> {
   static title = 'Bottom bar with indicator';
   static appbarElevation = 4;
 
   state = {
-    index: 0,
+    index: 1,
     routes: [
       { key: '1', title: 'First', icon: 'ios-speedometer', color: '#F44336' },
       {
@@ -140,6 +146,7 @@ export default class BottomBarIconExample extends React.Component<*, State> {
 }
 
 const styles = StyleSheet.create({
+  
   tabbar: {
     backgroundColor: '#222',
   },

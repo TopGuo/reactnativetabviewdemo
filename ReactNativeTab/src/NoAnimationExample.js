@@ -2,14 +2,20 @@
 
 import * as React from 'react';
 import {
+  AsyncStorage,
   Animated,
   View,
   TouchableWithoutFeedback,
   StyleSheet,
+  Text,
+  StatusBar,
+  Platform,
 } from 'react-native';
 import { TabViewAnimated } from '../tab/src';
 import { Ionicons } from '@expo/vector-icons';
 import BasicListView from './BasicListView';
+//顶部滑动组件
+import NativeDriverExample from './NativeDriverExample';
 
 import type { Route, NavigationState } from '../tab/types';
 
@@ -21,7 +27,7 @@ type State = NavigationState<
     title: string,
     icon: string,
   }>
->;
+  >;
 
 export default class TopBarIconExample extends React.Component<*, State> {
   static title = 'No animation';
@@ -32,11 +38,10 @@ export default class TopBarIconExample extends React.Component<*, State> {
   state = {
     index: 0,
     routes: [
-      { key: '1', title: 'Featured', icon: 'ios-star' },
-      { key: '2', title: 'Playlists', icon: 'ios-albums' },
-      { key: '3', title: 'Near Me', icon: 'ios-navigate' },
-      { key: '4', title: 'Search', icon: 'ios-search' },
-      { key: '5', title: 'Updates', icon: 'ios-download' },
+      { key: '1', title: '职位', icon: 'ios-star' },
+      { key: '2', title: '公司', icon: 'ios-albums' },
+      { key: '3', title: '消息', icon: 'ios-search' },
+      { key: '4', title: '我的', icon: 'ios-navigate' },
     ],
   };
 
@@ -45,6 +50,7 @@ export default class TopBarIconExample extends React.Component<*, State> {
       index,
     });
 
+  //tab上文字
   _renderLabel = ({ position, navigationState }) => ({ route, index }) => {
     const inputRange = navigationState.routes.map((x, i) => i);
     const outputRange = inputRange.map(
@@ -121,22 +127,21 @@ export default class TopBarIconExample extends React.Component<*, State> {
         );
       case '3':
         return (
-          <BasicListView
-            style={[styles.page, { backgroundColor: '#9DB1B5' }]}
-          />
+          // <BasicListView
+          //   style={[styles.page, { backgroundColor: '#9DB1B5' }]}
+          // />
+          <NativeDriverExample />
         );
       case '4':
         return (
           <BasicListView
             style={[styles.page, { backgroundColor: '#EDD8B5' }]}
           />
+          // <View>
+          //   <Text>我的</Text>
+          // </View>
         );
-      case '5':
-        return (
-          <BasicListView
-            style={[styles.page, { backgroundColor: '#9E9694' }]}
-          />
-        );
+
       default:
         return null;
     }
@@ -144,15 +149,19 @@ export default class TopBarIconExample extends React.Component<*, State> {
 
   render() {
     return (
-      <TabViewAnimated
-        style={[styles.container, this.props.style]}
-        navigationState={this.state}
-        renderScene={this._renderScene}
-        renderFooter={this._renderFooter}
-        onIndexChange={this._handleIndexChange}
-        animationEnabled={false}
-        swipeEnabled={false}
-      />
+      <View>
+        
+        <TabViewAnimated
+          style={[styles.container, this.props.style]}
+          navigationState={this.state}
+          renderScene={this._renderScene}
+          renderFooter={this._renderFooter}
+          onIndexChange={this._handleIndexChange}
+          animationEnabled={false}
+          swipeEnabled={false}
+        />
+      </View>
+
     );
   }
 }
@@ -161,14 +170,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  statusbar: {
+    backgroundColor: '#3cb371',//'#222',
+    height: Platform.OS === 'ios' ? 20 : 25,
+  },
   tabbar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#f4f4f4',
+    backgroundColor: '#f4f4f4',//tab颜色
+    height: 70,//tabbar 高度 （不填默认自动适配）
   },
   tab: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',//控制图标和文字垂直居中
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: 'rgba(0, 0, 0, .2)',
     paddingTop: 4.5,
@@ -184,10 +199,10 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    color: '#0084ff',
+    color: '#0084ff',//控制图标颜色(焦点集中)
   },
   outline: {
-    color: '#939393',
+    color: '#939393',//（图标颜色焦点失去）
   },
   label: {
     fontSize: 10,

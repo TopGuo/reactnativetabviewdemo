@@ -24,18 +24,20 @@ const initialLayout = {
 };
 
 export default class NativeDriverExample extends React.Component<*, State> {
+  
   static title = 'With native animations';
   static appbarElevation = 0;
 
   state = {
     index: 1,
     routes: [
-      { key: '1', title: 'First' },
-      { key: '2', title: 'Second' },
-      { key: '3', title: 'Third' },
+      { key: '1', title: '对我感兴趣'},
+      { key: '2', title: '看过我' },
+      { key: '3', title: '新职位' },
     ],
   };
 
+  //滑动点击
   _handleIndexChange = index =>
     this.setState({
       index,
@@ -73,13 +75,6 @@ export default class NativeDriverExample extends React.Component<*, State> {
             style={{ backgroundColor: '#4caf50' }}
           />
         );
-      case '4':
-        return (
-          <SimplePage
-            state={this.state}
-            style={{ backgroundColor: '#2196f3' }}
-          />
-        );
       default:
         return null;
     }
@@ -108,13 +103,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tabbar: {
-    backgroundColor: '#222',
+    backgroundColor: '#fff',//
   },
   indicator: {
-    backgroundColor: '#ffeb3b',
+    backgroundColor: '#66cdaa',
+    height:3,//下划线宽度
   },
   label: {
-    color: '#fff',
+    color: '#939393',
     fontWeight: '400',
   },
 });
