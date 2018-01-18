@@ -7,6 +7,7 @@ import {
   View,
   TouchableOpacity,
   Text,
+  Alert,
 } from 'react-native';
 import {
   TabViewAnimated,
@@ -42,6 +43,7 @@ export default class NativeDriverExample extends React.Component<*, State> {
       { key: '2', title: '看过我' },
       { key: '3', title: '新职位' },
     ],
+    henderTab:1,
   };
 
   //滑动点击
@@ -49,23 +51,44 @@ export default class NativeDriverExample extends React.Component<*, State> {
     this.setState({
       index,
     });
+
+    //点击聊天
+  _clickChatWith = () => {
+    this.setState({
+      henderTab:1
+    });
+    Alert.alert('提示','聊天',[{
+      text:'我知道了'
+    }]);
+  };
+  //点击互动
+  _clickInteraction=()=>{
+    this.setState({
+      henderTab:2,
+    });
+    Alert.alert('提示','互动',[{
+      text:'我知道了'
+    }]);
+  };
   //渲染头部
   _renderHeader = props => (
     <View>
       <View style={{ backgroundColor: '#66cdaa', height: 50, alignItems: 'center', justifyContent: 'center', }}>
         <View style={{ borderWidth: 2, borderColor: '#fff', borderRadius: 8, height: 30, width: 130,  flexDirection: 'row' }}>
           <TouchableOpacity
-            style={{ alignItems: 'center',flex:1,backgroundColor: '#fff',justifyContent:'center' }}
+            style={this.state.henderTab==1?styles.henderabFocus:styles.hendertabUnFocus}
+            onPress={()=>{this._clickChatWith()}}
           >
-            <Text style={{ color: '#66cdaa' }}>
+            <Text style={this.state.henderTab==1?styles.henderabTextFocus:styles.hendertabTextUnFocus}>
               聊天
             </Text>
           </TouchableOpacity>
           <View style={{ borderWidth: 1, borderColor: '#fff', height: 30, width: 1 }}></View>
           <TouchableOpacity
-            style={{ alignItems: 'center', flex:1,justifyContent: 'center', backgroundColor: '#66cdaa' }}
+            style={this.state.henderTab==2?styles.henderabFocus:styles.hendertabUnFocus}
+            onPress={()=>{this._clickInteraction()}}
           >
-            <Text style={{ color: '#fff' }}>
+            <Text style={this.state.henderTab==2?styles.henderabTextFocus:styles.hendertabTextUnFocus}>
               互动
             </Text>
           </TouchableOpacity>
@@ -109,7 +132,7 @@ export default class NativeDriverExample extends React.Component<*, State> {
         return null;
     }
   };
-
+//控制滚屏
   _renderPager = props => <TabViewPagerExperimental {...props} />;
 
   render() {
@@ -144,4 +167,23 @@ const styles = StyleSheet.create({
     color: '#939393',
     fontWeight: '400',
   },
+  henderabFocus:{
+    alignItems: 'center',
+    flex:1,
+    backgroundColor: '#fff',
+    justifyContent:'center'
+  },
+  henderabTextFocus:{
+    color: '#66cdaa'
+  },
+  hendertabUnFocus:{
+    alignItems: 'center', 
+    flex:1,
+    justifyContent: 'center',
+    backgroundColor: '#66cdaa'
+  },
+  hendertabTextUnFocus:{
+    color: '#fff',
+  }
+
 });

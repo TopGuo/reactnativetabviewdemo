@@ -30,6 +30,9 @@ type State = NavigationState<
   >;
 
 export default class TopBarIconExample extends React.Component<*, State> {
+  static navigationOptions = {
+    header: null,
+  };
   static title = 'No animation';
   static backgroundColor = '#f4f4f4';
   static tintColor = '#222';
@@ -94,7 +97,7 @@ export default class TopBarIconExample extends React.Component<*, State> {
   };
   //渲染头部
   _renderHeader = props => (
-    <View style={{backgroundColor:'#66cdaa',height:50}}>
+    <View style={{ backgroundColor: '#66cdaa', height: 50 }}>
 
 
     </View>
@@ -162,7 +165,7 @@ export default class TopBarIconExample extends React.Component<*, State> {
         onIndexChange={this._handleIndexChange}
         animationEnabled={false}
         swipeEnabled={false}
-        
+
       />
     );
   }
