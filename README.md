@@ -25,7 +25,9 @@ This project was bootstrapped with [Create React Native App](https://github.com/
  ```
 
 **详细的介绍地址**
+
 [topbirdsblog](http://wwww.cnblogs.com/gdsblog)
 
 **我的qq交流群**
+
 ![expo - react native兴趣交流群](https://images.cnblogs.com/cnblogs_com/gdsblog/1148936/o_1.jpg)
