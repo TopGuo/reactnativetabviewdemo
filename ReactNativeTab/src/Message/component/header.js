@@ -10,7 +10,9 @@ import {
     Alert,
 } from 'react-native';
 
-
+/**
+ * 定义一个上级onEvent
+ */
 export default class header extends React.Component<*, State> {
     constructor(props) {
         super(props);
@@ -32,6 +34,7 @@ export default class header extends React.Component<*, State> {
         this.setState({
             henderTab: 2,
         });
+        this.props.onEvent(2);
         Alert.alert('提示', '互动', [{
             text: '我知道了'
         }]);
@@ -42,7 +45,10 @@ export default class header extends React.Component<*, State> {
             <View style={styles.headerContainer}>
                 <TouchableOpacity
                     style={this.state.henderTab == 1 ? styles.henderabFocus : styles.hendertabUnFocus}
-                    onPress={() => { this._clickChatWith() }}
+                    onPress={() => { 
+                        this._clickChatWith();
+                        this.props.onEvent(1); 
+                    }}
                 >
                     <Text style={this.state.henderTab == 1 ? styles.henderabTextFocus : styles.hendertabTextUnFocus}>聊天</Text>
 
@@ -50,7 +56,10 @@ export default class header extends React.Component<*, State> {
                 <View style={{ borderWidth: 1, borderColor: '#fff', height: 30, width: 1 }}></View>
                 <TouchableOpacity
                     style={this.state.henderTab == 2 ? styles.henderabFocus : styles.hendertabUnFocus}
-                    onPress={() => { this._clickInteraction() }}
+                    onPress={() => {
+                         this._clickInteraction();
+                        this.props.onEvent(2);
+                    }}
                 >
                     <Text style={this.state.henderTab == 2 ? styles.henderabTextFocus : styles.hendertabTextUnFocus}>互动</Text>
                 </TouchableOpacity>

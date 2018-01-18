@@ -37,31 +37,68 @@
 // //make this component available to the app
 // export default Chatwith;
 
-//import liraries
-import React, { Component } from 'react';
+// //import liraries
+// import React, { Component } from 'react';
+// import { View, Text, StyleSheet } from 'react-native';
+
+// // create a component
+// class Chatwith extends Component {
+//     render() {
+//         return (
+//             <View style={styles.container}>
+//                 <Text>MyClass</Text>
+//             </View>
+//         );
+//     }
+// }
+
+// // define your styles
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//         backgroundColor: '#2c3e50',
+//     },
+// });
+
+// //make this component available to the app
+// export default Chatwith;
+
+/* @flow */
+
+import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-// create a component
-class Chatwith extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text>MyClass</Text>
-            </View>
-        );
-    }
+export default function Chatwith() {
+  return (
+    <View style={styles.page}>
+      <View style={styles.container}>
+        <Text style={styles.text}>
+          聊天
+        </Text>
+      </View>
+    </View>
+  );
 }
 
-// define your styles
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#2c3e50',
-    },
+  page: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:'red'
+  },
+  container: {
+    backgroundColor: 'rgba(0, 0, 0, .1)',
+    borderRadius: 3,
+  },
+  text: {
+    color: '#fff',
+    textAlign: 'center',
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
 });
 
-//make this component available to the app
-export default Chatwith;
 

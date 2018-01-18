@@ -15,7 +15,9 @@ import { TabViewAnimated } from '../tab/src';
 import { Ionicons } from '@expo/vector-icons';
 import BasicListView from './BasicListView';
 //顶部滑动组件
-import NativeDriverExample from './NativeDriverExample';
+//import NativeDriverExample from './NativeDriverExample';
+//引入消息
+import MessageComponent from './Message/index'
 
 import type { Route, NavigationState } from '../tab/types';
 
@@ -140,7 +142,8 @@ export default class TopBarIconExample extends React.Component<*, State> {
           // <BasicListView
           //   style={[styles.page, { backgroundColor: '#9DB1B5' }]}
           // />
-          <NativeDriverExample />
+          // <NativeDriverExample />
+          <MessageComponent />
         );
       case '4':
         return (

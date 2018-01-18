@@ -10,12 +10,14 @@ import {
     Alert,
 } from 'react-native';
 
-import HeaderComponent from "./component/header";
+//顶部滑动组件
+import NativeDriverExample from '../NativeDriverExample';
+//最顶部消息互动组件
+import HedaerTopComponent from './component/header'
 
-import Chatwith from "./Chat/Chatwith";
-
-
-export default class NativeDriverExample extends React.Component<*, State> {
+//
+const PmWH= Dimensions.get('window')
+export default class index extends React.Component<*, State> {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,54 +36,64 @@ export default class NativeDriverExample extends React.Component<*, State> {
         this.setState({
             henderTab: 1
         });
-        Alert.alert('提示', '聊天', [{
-            text: '我知道了'
-        }]);
+        // Alert.alert('提示', '聊天', [{
+        //     text: '我知道了'
+        // }]);
     };
     //点击互动
     _clickInteraction = () => {
         this.setState({
             henderTab: 2,
         });
-        Alert.alert('提示', '互动', [{
-            text: '我知道了'
-        }]);
+        // Alert.alert('提示', '互动', [{
+        //     text: '我知道了'
+        // }]);
     };
     //渲染头部--自定义组件 头部
     _renderHeader = () => (
-        <View style={styles.container}>
-            <View style={styles.headerContainer}>
-                <TouchableOpacity
-                    style={this.state.henderTab == 1 ? styles.henderabFocus : styles.hendertabUnFocus}
-                    onPress={() => { this._clickChatWith() }}
-                >
-                    <Text style={this.state.henderTab == 1 ? styles.henderabTextFocus : styles.hendertabTextUnFocus}>聊天</Text>
+        <View>
+            <View style={styles.container}>
+                <View style={styles.headerContainer}>
+                    <TouchableOpacity
+                        style={this.state.henderTab == 1 ? styles.henderabFocus : styles.hendertabUnFocus}
+                        onPress={() => { this._clickChatWith() }}
+                    >
+                        <Text style={this.state.henderTab == 1 ? styles.henderabTextFocus : styles.hendertabTextUnFocus}>聊天</Text>
 
-                </TouchableOpacity>
-                <View style={{ borderWidth: 1, borderColor: '#fff', height: 30, width: 1 }}></View>
-                <TouchableOpacity
-                    style={this.state.henderTab == 2 ? styles.henderabFocus : styles.hendertabUnFocus}
-                    onPress={() => { this._clickInteraction() }}
-                >
-                    <Text style={this.state.henderTab == 2 ? styles.henderabTextFocus : styles.hendertabTextUnFocus}>互动</Text>
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                    <View style={{ borderWidth: 1, borderColor: '#fff', height: 30, width: 1 }}></View>
+                    <TouchableOpacity
+                        style={this.state.henderTab == 2 ? styles.henderabFocus : styles.hendertabUnFocus}
+                        onPress={() => { this._clickInteraction() }}
+                    >
+                        <Text style={this.state.henderTab == 2 ? styles.henderabTextFocus : styles.hendertabTextUnFocus}>互动</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );
-    //渲染主体--内容
-    _renderContent = () => (
-        this.state.henderTab == 1 ?
-            (
-                <Chatwith />
-            ) :
-            (<View>
 
-            </View>)
-
-    );
     render() {
+        //渲染主体--内容
+        const _renderContent = this.state.henderTab == 1 ?
+            (
+                <View style={{ height: PmWH.height, backgroundColor: 'blue' }}></View>
+            ) :
+            (
+                <View style={{ height: PmWH.height, backgroundColor: 'red' }}></View>
+            )
         return (
-          <Chatwith />
+            <View>
+                <HedaerTopComponent 
+                 onEvent={(key)=>{
+                    this.setState({
+                        henderTab: key,
+                    });
+                    console.log('key='+key);
+                 }}
+                />
+                {_renderContent}
+            </View>
         );
     }
 }
