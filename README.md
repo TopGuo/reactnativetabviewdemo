@@ -1,8 +1,6 @@
 
-## This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app)
-
 ## 这个项目是基于crna创建,[了解更多crna](https://github.com/react-community/create-react-native-app)
-.
+
 
 ## 项目运行效果
 ![仿boss直聘效果图一](https://images2017.cnblogs.com/blog/1106982/201801/1106982-20180118131955521-493645199.gif)
@@ -33,3 +31,4 @@
 **我的qq交流群**
 
 ![expo - react native兴趣交流群](https://images.cnblogs.com/cnblogs_com/gdsblog/1148936/o_1.jpg)
+
