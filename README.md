@@ -1,5 +1,7 @@
-This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app)
-这个项目是基于crna创建,[了解更多crna](https://github.com/react-community/create-react-native-app)
+
+## This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app)
+
+## 这个项目是基于crna创建,[了解更多crna](https://github.com/react-community/create-react-native-app)
 .
 
 ## 项目运行效果
