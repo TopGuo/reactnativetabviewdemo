@@ -5,10 +5,12 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 ## 项目运行效果
 ![仿boss直聘效果图一](https://images2017.cnblogs.com/blog/1106982/201801/1106982-20180118131955521-493645199.gif)
 
-![仿boss直聘效果图二](https://images2017.cnblogs.com/blog/1106982/201801/1106982-20180116230928693-231007204.gif)
+![仿boss直聘效果图二](https://images2017.cnblogs.com/blog/1106982/201801/1106982-20180117230856678-1654657327.gif)
 
 
 ## 下载预览该项目说明
+
+#### 运行以下命令
 
 * `yarn or npm install`
 * `yarn start`
